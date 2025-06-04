@@ -1,0 +1,40 @@
+// 覆盖自带样式
+.editor-container {
+  /** h1 h2... 标签样式 **/
+  .tiptap.ProseMirror h1 {
+    margin-top: 1.5em;
+  }
+  .tiptap.ProseMirror h2 {
+    margin-top: 1.25em;
+  }
+  .tiptap.ProseMirror h3 {
+    margin-top: 1em;
+  }
+  .tiptap.ProseMirror h4 {
+    margin-top: 0.75em;
+  }
+
+  /** p 标签样式 **/
+  .tiptap.ProseMirror p:not(:first-child) {
+    margin-top: 0.75em; // defaults to 20px
+  }
+}
+
+/** 操作按钮样式 **/
+.hw-bubble-menu {
+  display: flex;
+  background: #fff;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.25);
+
+  .hw-editor-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    transition: all 0.2s ease-in-out;
+  }
+}
