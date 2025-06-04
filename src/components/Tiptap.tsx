@@ -3,13 +3,38 @@ import { EditorProvider, BubbleMenu, AnyExtension } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import BubbleMenuItems from "./BubbleMenuItems";
 import { MarkButton } from "@/components/tiptap-ui/mark-button";
+import { TaskList } from "@tiptap/extension-task-list";
+import { TaskItem } from "@tiptap/extension-task-item";
+import { Image } from "@tiptap/extension-image";
+import { ImageUploadNode } from "@/components/tiptap-node/image-upload-node";
+import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
+import { TextAlign } from "@tiptap/extension-text-align";
 import "@/styles/_variables.scss";
 import "@/styles/_keyframe-animations.scss";
 import "@/components/tiptap-node/code-block-node/code-block-node.scss";
 import "@/components/tiptap-node/paragraph-node/paragraph-node.scss";
+import "@/components/tiptap-node/image-node/image-node.scss";
+import "@/components/tiptap-node/image-upload-node/image-upload-node.scss";
+import "@/components/tiptap-node/list-node/list-node.scss";
 
 // define your extension array
-const extensions = [StarterKit, MarkButton] as AnyExtension[];
+const extensions = [
+  StarterKit,
+  MarkButton,
+  Image,
+  ImageUploadNode.configure({
+    accept: "image/*",
+    maxSize: MAX_FILE_SIZE,
+    limit: 3,
+    upload: handleImageUpload,
+    onError: (error) => console.error("Upload failed:", error),
+  }),
+  TextAlign.configure({ types: ["heading", "paragraph"] }),
+  TaskList,
+  TaskItem.configure({
+    nested: true,
+  }),
+] as AnyExtension[];
 
 const content = `
         <p>

@@ -2,6 +2,9 @@ import { useCurrentEditor } from "@tiptap/react";
 import "./bubble-menu-items.scss";
 import { MarkButton } from "./tiptap-ui/mark-button";
 import { HeadingButton } from "./tiptap-ui/heading-button";
+import { UndoRedoButton } from "./tiptap-ui/undo-redo-button";
+import { ImageUploadButton } from "./tiptap-ui/image-upload-button";
+import { TextAlignButton } from "./tiptap-ui/text-align-button";
 
 export default function BubbleMenuItems() {
   const { editor } = useCurrentEditor();
@@ -12,6 +15,8 @@ export default function BubbleMenuItems() {
       className="hw-bubble-menu tiptap-button-group"
       data-orientation="horizontal"
     >
+      <UndoRedoButton action="undo" />
+      <UndoRedoButton action="redo" />
       <HeadingButton level={1}></HeadingButton>
       <HeadingButton level={2}></HeadingButton>
       <HeadingButton level={3}></HeadingButton>
@@ -58,6 +63,11 @@ export default function BubbleMenuItems() {
           editor.isActive("subscript") ? "is-active" : ""
         }`}
       />
+      <ImageUploadButton text="Add" />
+      <TextAlignButton align="left" />
+      <TextAlignButton align="center" />
+      <TextAlignButton align="right" />
+      <TextAlignButton align="justify" />
     </div>
   );
 }
